@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Baby } from '../entities/baby';
 
 @Component({
   selector: 'app-login',
@@ -17,13 +18,15 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
    onSubmit(loginForm) {
-    console.log(loginForm.value)
+    console.log(loginForm.value);
 
     if (loginForm.valid) {
       // Send an http request to login
     } else {
       // Display error messages.
     }
+ 
+
 
    }
 

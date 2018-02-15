@@ -25,9 +25,6 @@ export class LoginComponent implements OnInit {
     } else {
       // Display error messages.
     }
- 
-
-
    }
 
   ngOnInit() {

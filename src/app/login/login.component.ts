@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
       
       // Navigate to the home page (or some other page)
       this.authService.login().subscribe(x => {
+        // Can you naviate to the path the user tried to go to instead of 
+        // always the contact?
         this.router.navigate(['contact']);
       });
       

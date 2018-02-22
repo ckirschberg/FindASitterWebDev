@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Baby } from '../entities/baby';
 import { Router } from '@angular/router';
 import { PasswordValidator } from '../PasswordValidator';
+import { AuthService } from '../auth.service';
 // import { PasswordValidator } from '../PasswordValidator';
 
 @Component({
@@ -18,17 +19,21 @@ export class LoginComponent implements OnInit {
   //   password: new FormControl()
   // });
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, 
+    private authService: AuthService) {
   }
 
    onSubmit(loginForm) {
-    console.log(loginForm.value);
+    console.log("is Valid?: " + loginForm.valid);
 
     if (loginForm.valid) {
       // Send an http request to login
       
       // Navigate to the home page (or some other page)
-      this.router.navigate(['home']);
+      this.authService.login().subscribe(x => {
+        this.router.navigate(['contact']);
+      });
+      
     } else {
       // Display error messages.
     }

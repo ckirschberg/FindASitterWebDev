@@ -10,7 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';  // <-- #1 import module
-// import { PasswordValidator } from './PasswordValidator';
+import { AuthGuardService } from './auth-guard.service';
+import { AuthService } from './auth.service';
 
 
 @NgModule({
@@ -21,14 +22,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HomeComponent,
     ContactComponent,
     PageNotFoundComponent,
-    // PasswordValidator
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuardService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

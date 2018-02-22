@@ -1,11 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
+
+<nav>
+  <a routerLink="home" routerLinkActive="active-menu">Home</a>
+  <a routerLink="contact" routerLinkActive="active-menu">Contact </a>
+  <a routerLink="register" routerLinkActive="active-menu">Register </a>
+  <a routerLink="login" routerLinkActive="active-menu">Login </a>
+</nav>
+
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
 </div>
-
-<app-login></app-login>
-<app-register></app-register>
 
 <router-outlet></router-outlet>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Baby } from '../entities/baby';
+import { Router } from '@angular/router';
+// import { PasswordValidator } from '../PasswordValidator';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +17,17 @@ export class LoginComponent implements OnInit {
   //   password: new FormControl()
   // });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {
+  }
 
    onSubmit(loginForm) {
     console.log(loginForm.value);
 
     if (loginForm.valid) {
       // Send an http request to login
+      
+      // Navigate to the home page (or some other page)
+      this.router.navigate(['home']);
     } else {
       // Display error messages.
     }
@@ -30,7 +36,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', 
+      // Validators.compose([
+        Validators.required,
+        // PasswordValidator.getPasswordValidator()
+       ]
+      // )]
     });
   }
 

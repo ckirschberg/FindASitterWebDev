@@ -1,15 +1,16 @@
-// import {FormControl} from "@angular/forms";
+import {FormControl} from "@angular/forms";
 
-// export class PasswordValidator {
+export class PasswordValidator {
 
-//   static getPasswordValidator() {
-//     return function initialsValidator(control: FormControl): { [s: string]: boolean } {
+  static getPasswordValidator() {
+    return function passwordValidator(control: FormControl): { [s: string]: boolean } {
 
-//       if (!control.value.match(/^123/)) {
-//         return {invalidChars: true};
-//       }
+      // Write code here..
+      if (!control.value.match(/^123/)) {
+        return {invalidPassword: true};
+      }
 
-
-//     }
-//   }
-// }
+      return null;
+    }
+  }
+}

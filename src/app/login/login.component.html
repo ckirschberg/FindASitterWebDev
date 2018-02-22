@@ -10,6 +10,9 @@
   <label>Password
     <input formControlName="password">
   </label>
+  <div *ngIf="loginForm.controls.password.errors?.invalidPassword">
+    Invalid Password
+  </div>
 
   <p>Form value: {{ loginForm.value | json }}</p>
   <p>Form status: {{ loginForm.status | json }}</p>

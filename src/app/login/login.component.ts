@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Baby } from '../entities/baby';
 import { Router } from '@angular/router';
+import { PasswordValidator } from '../PasswordValidator';
 // import { PasswordValidator } from '../PasswordValidator';
 
 @Component({
@@ -37,11 +38,11 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', 
-      // Validators.compose([
+      Validators.compose([
         Validators.required,
-        // PasswordValidator.getPasswordValidator()
+        PasswordValidator.getPasswordValidator()
        ]
-      // )]
+      )]
     });
   }
 

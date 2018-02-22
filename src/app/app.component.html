@@ -4,7 +4,8 @@
   <a routerLink="home" routerLinkActive="active-menu">Home</a>
   <a routerLink="contact" routerLinkActive="active-menu">Contact </a>
   <a routerLink="register" routerLinkActive="active-menu">Register </a>
-  <a routerLink="login" routerLinkActive="active-menu">Login </a>
+  <a routerLink="login" *ngIf="!authService.isLoggedIn" routerLinkActive="active-menu">Login </a>
+  <a routerLink="" *ngIf="authService.isLoggedIn" (click)="authService.logout()">Logout </a>
 </nav>
 
 <div style="text-align:center">

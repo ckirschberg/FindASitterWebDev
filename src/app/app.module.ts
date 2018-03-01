@@ -12,6 +12,9 @@ import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';  // <-- #1 import module
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
+import { DataService } from './data.service';
+import { RegistrationComponent } from './registration/registration.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 
 @NgModule({
@@ -22,13 +25,15 @@ import { AuthService } from './auth.service';
     HomeComponent,
     ContactComponent,
     PageNotFoundComponent,
+    RegistrationComponent,
+    UsersListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuardService, AuthService],
+  providers: [AuthGuardService, AuthService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,31 @@
-<p>
-  register works!
-</p>
+<form novalidate [formGroup]="registerForm"
+  (submit)="onSubmit(registerForm)">
+
+  <div>
+    <label>Username</label>
+    <input type="text" formControlName="username">
+  </div>
+
+  <div>
+    <label>Password</label>
+    <input type="text" formControlName="password">
+  </div>
+
+  <div>
+    <label>Enter password again</label>
+    <input type="text" formControlName="password2">
+  </div>
+  
+  <div>
+    <label>Firstname</label>
+    <input type="text" formControlName="firstname">
+  </div>
+
+  <div>
+    <label>Lastname</label>
+    <input type="text" formControlName="lastname">
+  </div>
+
+  <!-- Should have all baby-fields  -->
+  <button type="submit">Create user</button>
+</form>

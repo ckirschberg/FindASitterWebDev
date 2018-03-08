@@ -7,6 +7,7 @@ import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuardService } from './auth-guard.service';
 import { UsersListComponent } from './users-list/users-list.component';
+import { BabyDetailsComponent } from './baby-details/baby-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'contact', component: ContactComponent, canActivate: [AuthGuardService] },
   { path: 'users-list', component: UsersListComponent },
+  { path: 'baby-details/:id', component: BabyDetailsComponent },
   { path: '**', component: PageNotFoundComponent }
  ];
 

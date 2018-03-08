@@ -51,5 +51,10 @@ export class DataService {
     this.sitters.push(sitter);
   }
 
+  public getBaby(username: String): Baby {
+    return this.babies.find(x => x.username === username);
+    //for (int i=0; i < this.babies.)
+  }
+
 
 }

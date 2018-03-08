@@ -1,5 +1,7 @@
 <div *ngFor="let baby of babies">
-  <p>
+  
+  <p routerLink="/baby-details/{{baby.username}}">
     {{baby.firstname}} {{baby.lastname}} 
   </p>
+  
 </div>

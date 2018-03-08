@@ -1,6 +1,8 @@
 describe('Tests for babies', () => {
   it('1.0: Should create a new baby with valid input', async() => {
-
+    
+    //let id = 1;
+    //objs.findIndex(obj => obj.id === id);
   });
   it('1.1: Should not create a new baby with invalid input', async() => {
 
@@ -14,5 +16,5 @@ describe('Tests for babies', () => {
   });
 
 
-  
+
 })

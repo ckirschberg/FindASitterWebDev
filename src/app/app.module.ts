@@ -15,6 +15,7 @@ import { AuthService } from './auth.service';
 import { DataService } from './data.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { UserComponent } from './users-list/user/user.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { UsersListComponent } from './users-list/users-list.component';
     PageNotFoundComponent,
     RegistrationComponent,
     UsersListComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

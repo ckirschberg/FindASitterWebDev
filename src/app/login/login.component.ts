@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Baby } from '../entities/baby';
-import { Router } from '@angular/router';
 import { PasswordValidator } from '../PasswordValidator';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 // import { PasswordValidator } from '../PasswordValidator';
 
 @Component({
@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
 
     if (loginForm.valid) {
       // Send an http request to login
-      
       // Navigate to the home page (or some other page)
       this.authService.login().subscribe(x => {
         // Can you naviate to the path the user tried to go to instead of 
@@ -39,6 +38,7 @@ export class LoginComponent implements OnInit {
     } else {
       // Display error messages.
     }
+    console.log("Hi there!");
    }
 
   ngOnInit() {

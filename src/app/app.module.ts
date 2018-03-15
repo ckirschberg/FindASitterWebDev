@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -16,7 +17,10 @@ import { DataService } from './data.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { BabyDetailsComponent } from './baby-details/baby-details.component';
+import { UserComponent } from './user/user.component';
 
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -29,11 +33,14 @@ import { BabyDetailsComponent } from './baby-details/baby-details.component';
     RegistrationComponent,
     UsersListComponent,
     BabyDetailsComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule,MatSelectModule
   ],
   providers: [AuthGuardService, AuthService, DataService],
   bootstrap: [AppComponent]

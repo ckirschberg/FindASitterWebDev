@@ -16,4 +16,7 @@ export class UsersListComponent implements OnInit {
   ngOnInit() {
     this.babies = this.data.babies;
   }
+  onUserClicked(baby) {
+    console.log(baby);
+  }
 }

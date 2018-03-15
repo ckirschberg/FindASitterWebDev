@@ -1,7 +1,10 @@
 <form [formGroup]="loginForm" (submit)="onSubmit(loginForm)" novalidate>
   
   <label>Username
-    <input formControlName="username">
+    <mat-form-field>
+      <input matInput placeholder="username" formControlName="username">
+    </mat-form-field>
+    <!-- <input formControlName="username"> -->
   </label>
   <div *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
     You must fill out your username

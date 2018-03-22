@@ -21,6 +21,11 @@ import { UserComponent } from './user/user.component';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { RegisterActions } from './register/register.actions';
+import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
+import { NgReduxRouterModule, NgReduxRouter } from '@angular-redux/router';
+import { IAppState } from './store/store';
+import { rootReducer } from './store/store';
 
 @NgModule({
   declarations: [
@@ -40,9 +45,21 @@ import {MatSelectModule} from '@angular/material/select';
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    MatInputModule,MatSelectModule
+    MatInputModule,MatSelectModule,
+    NgReduxModule,
+    NgReduxRouterModule.forRoot()
   ],
-  providers: [AuthGuardService, AuthService, DataService],
+  providers: [AuthGuardService, AuthService, DataService, RegisterActions ],
+  
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(private ngRedux: NgRedux<IAppState>,
+    private devTool: DevToolsExtension,
+    private ngReduxRouter: NgReduxRouter,) {
+    
+    this.ngRedux.configureStore(rootReducer, {});
+
+      ngReduxRouter.initialize(/* args */);    
+  }
+}

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { rootReducer } from './store/store'; // Added this to get the root reducer
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -21,6 +22,10 @@ import { UserComponent } from './user/user.component';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store';
+import { IAppState } from './store/store';
+import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
+import { RegisterActions } from './register/register.actions';
 
 @NgModule({
   declarations: [
@@ -40,9 +45,19 @@ import {MatSelectModule} from '@angular/material/select';
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    MatInputModule,MatSelectModule
+    MatInputModule,MatSelectModule,
+    NgReduxModule, NgReduxRouterModule.forRoot()
   ],
-  providers: [AuthGuardService, AuthService, DataService],
+  providers: [AuthGuardService, AuthService, DataService, RegisterActions],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private ngRedux: NgRedux<IAppState>,
+    private devTool: DevToolsExtension,
+    private ngReduxRouter: NgReduxRouter,) {
+   
+    this.ngRedux.configureStore(rootReducer, {});
+ 
+      ngReduxRouter.initialize(/* args */);   
+  }
+ }

@@ -25,7 +25,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store';
 import { IAppState } from './store/store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
-import { RegisterActions } from './register/register.actions';
+import { UsersActions } from './users.actions';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { RegisterActions } from './register/register.actions';
     MatInputModule,MatSelectModule,
     NgReduxModule, NgReduxRouterModule.forRoot()
   ],
-  providers: [AuthGuardService, AuthService, DataService, RegisterActions],
+  providers: [AuthGuardService, AuthService, DataService, UsersActions],
   bootstrap: [AppComponent]
 })
 export class AppModule {

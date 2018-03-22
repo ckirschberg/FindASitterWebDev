@@ -1,4 +1,4 @@
-import { RegisterActions } from './register.actions';
+import { UsersActions } from './../users.actions';
 import { Component, OnInit } from '@angular/core';
 import { Baby } from '../entities/baby';
 import { Sitter } from '../entities/sitter';
@@ -21,8 +21,7 @@ export class RegisterComponent implements OnInit {
   
   constructor(private fb: FormBuilder, 
     private data: DataService, private router: Router,
-    private ngRedux: NgRedux<IAppState>, private registerActions: RegisterActions) {
-    
+    private ngRedux: NgRedux<IAppState>, private usersActions: UsersActions) {
    }
 
   onSubmit(form) {
@@ -33,8 +32,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
 
-    this.ngRedux.select(state => state.register).subscribe(register => {
-      this.isBaby = register.isBaby;
+    this.ngRedux.select(state => state.users).subscribe(users => {
+      this.isBaby = users.isBaby;
       console.log(this.isBaby);
     });
  

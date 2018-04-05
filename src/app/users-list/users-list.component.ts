@@ -4,6 +4,7 @@ import { DataService } from '../data.service';
 import { Baby } from '../entities/baby';
 import { Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-users-list',
@@ -11,11 +12,11 @@ import { NgRedux } from '@angular-redux/store';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit, OnDestroy {
-  subscription;
+  subscription: Subscription;
 
   ngOnDestroy(): void {
     // Always unsubscribe on destroy.
-    this.subscription.unsubcribe();
+    this.subscription.unsubscribe();
   }
   private babies: Baby[];
 

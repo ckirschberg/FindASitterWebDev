@@ -26,7 +26,8 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(form) {
     let baby: Baby = form.value as Baby;
-    this.data.addBaby(baby);
+    this.usersActions.createBaby(baby);
+    // this.data.addBaby(baby);
     this.router.navigate(['users-list']);
   }
 

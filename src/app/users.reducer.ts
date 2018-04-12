@@ -29,6 +29,29 @@ export function usersReducer(state: UsersState = INITIAL_STATE, action:any) {
       // console.log(newBabyArray);
       return tassign(state, { babies: newBabyArray});
    
+    case UsersActions.RATE_SITTER: // action.payload has .sittersUsername:string and .rating:number
+      
+      // find the sitter with the action.payload.sittersUsername
+      // use spread operator to update the array.
+      // 
+      
+
+      let index = state.sitters.findIndex(sitter => {return sitter.username === action.payload.sittersUsername});
+      let newRatings = [...state.sitters[index].rating, action.payload.rating];
+      console.log(newRatings);
+      console.log(index);
+      let newSitterObj = Object.assign({}, state.sitters[index]);
+      newSitterObj.rating = newRatings;
+
+      let newSitters = [...state.sitters.slice(0, index),
+        newSitterObj,
+        ...state.sitters.slice(index+1)];
+      console.log(newSitters);
+      return tassign(state, { sitters: newSitters});
+
+      // return state
+
+
   default:
      return state;
  }

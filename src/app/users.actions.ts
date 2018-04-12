@@ -12,10 +12,17 @@ export class UsersActions {
    // Available actions
    static SET_TYPE: string = 'SET_TYPE';
    static CREATE_BABY: string = 'CREATE_BABY';
+   static RATE_SITTER: string = 'RATE_SITTER';
 
+  rateSitter(sittersUsername: string, rating: number): void {
+    this.ngRedux.dispatch({
+      type: UsersActions.RATE_SITTER,
+      payload: {rating, sittersUsername}
+    });
+  }
 
    createBaby(baby: Baby) : void {
-   console.log(baby);
+    console.log(baby);
     this.ngRedux.dispatch({
       type: UsersActions.CREATE_BABY,
       payload: baby

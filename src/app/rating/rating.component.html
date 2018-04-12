@@ -1,0 +1,7 @@
+<form novalidate [formGroup]="ratingForm" (submit)="onSubmit(ratingForm)">
+  <mat-form-field>
+    <input matInput placeholder="1-5 rating" formControlName="rating">
+  </mat-form-field>
+
+  <input type="submit">
+</form>

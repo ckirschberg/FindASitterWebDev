@@ -26,6 +26,7 @@ import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store'
 import { IAppState } from './store/store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { UsersActions } from './users.actions';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { UsersActions } from './users.actions';
     UsersListComponent,
     BabyDetailsComponent,
     UserComponent,
+    RatingComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,7 @@ export class AppModule {
     private devTool: DevToolsExtension,
     private ngReduxRouter: NgReduxRouter,) {
    
-    this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
+      this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
  
       ngReduxRouter.initialize(/* args */);   
   }

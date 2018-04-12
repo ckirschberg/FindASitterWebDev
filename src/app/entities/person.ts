@@ -1,4 +1,5 @@
 export class Person {
+  public customerId?: String;
   public username: String;
   public firstname: String;
   public lastname: String;

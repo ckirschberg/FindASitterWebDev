@@ -1,3 +1,4 @@
+import { UsersService } from './../users.service';
 import { UsersActions } from './../users.actions';
 import { Component, OnInit } from '@angular/core';
 import { Baby } from '../entities/baby';
@@ -21,12 +22,21 @@ export class RegisterComponent implements OnInit {
   
   constructor(private fb: FormBuilder, 
     private data: DataService, private router: Router,
-    private ngRedux: NgRedux<IAppState>, private usersActions: UsersActions) {
+    private ngRedux: NgRedux<IAppState>, private usersActions: UsersActions,
+    private UsersService: UsersService) {
    }
 
   onSubmit(form) {
     let baby: Baby = form.value as Baby;
+
+    // Later we will integrate calling a ws with redux
+    // for now we are testing...
     this.usersActions.createBaby(baby);
+
+    this.UsersService.createBaby(baby).subscribe( result => {
+      console.log("from ws", result);
+    });
+
     // this.data.addBaby(baby);
     this.router.navigate(['users-list']);
   }

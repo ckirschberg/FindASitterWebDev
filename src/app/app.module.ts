@@ -1,3 +1,4 @@
+import { UsersService } from './users.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -27,6 +28,7 @@ import { IAppState } from './store/store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { UsersActions } from './users.actions';
 import { RatingComponent } from './rating/rating.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { RatingComponent } from './rating/rating.component';
     RatingComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -50,7 +53,7 @@ import { RatingComponent } from './rating/rating.component';
     MatInputModule,MatSelectModule,
     NgReduxModule, NgReduxRouterModule.forRoot()
   ],
-  providers: [AuthGuardService, AuthService, DataService, UsersActions],
+  providers: [AuthGuardService, AuthService, DataService, UsersActions, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

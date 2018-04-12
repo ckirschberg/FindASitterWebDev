@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UsersListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
@@ -26,7 +26,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.ngRedux.select(state => state.users).subscribe(users => {
-      console.log(users.babies);
+      console.log("babies in component", users.babies);
       this.babies = users.babies;
     });
     // this.babies = this.data.babies;

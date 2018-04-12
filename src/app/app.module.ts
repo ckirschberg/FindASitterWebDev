@@ -30,6 +30,11 @@ import { UsersActions } from './users.actions';
 import { RatingComponent } from './rating/rating.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { createEpicMiddleware, combineEpics } from "redux-observable";
+import { UsersEpic } from './users.epic';
+import { createLogger } from 'redux-logger';
+// const createLogger = require('redux-logger');
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,15 +58,32 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,MatSelectModule,
     NgReduxModule, NgReduxRouterModule.forRoot()
   ],
-  providers: [AuthGuardService, AuthService, DataService, UsersActions, UsersService],
+  providers: [AuthGuardService, AuthService, DataService, UsersActions, UsersService, UsersEpic],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(private ngRedux: NgRedux<IAppState>,
     private devTool: DevToolsExtension,
-    private ngReduxRouter: NgReduxRouter,) {
+    private ngReduxRouter: NgReduxRouter, private usersEpic: UsersEpic) {
+      
+      // From app.module.ts - constructor
+      const rootEpic = combineEpics(
+        this.usersEpic.getUsers, 
+    // Each epic is referenced here.
+      );
+    // Middleware
+      // http://redux.js.org/docs/advanced/Middleware.html
+      // https://github.com/angular-redux/store/blob/master/articles/epics.md
+      // const epicMiddleware = createEpicMiddleware(rootEpic);
+      const middleware = [
+        createEpicMiddleware(rootEpic), createLogger({ level: 'info', collapsed: true })
+      ];
+      this.ngRedux.configureStore(
+        rootReducer,
+        {}, middleware, [ devTool.isEnabled() ? devTool.enhancer() : f => f]);
+    
    
-      this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
+      // this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
  
       ngReduxRouter.initialize(/* args */);   
   }

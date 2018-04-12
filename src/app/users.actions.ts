@@ -13,6 +13,15 @@ export class UsersActions {
    static SET_TYPE: string = 'SET_TYPE';
    static CREATE_BABY: string = 'CREATE_BABY';
    static RATE_SITTER: string = 'RATE_SITTER';
+   static GET_USERS: string = 'GET_USERS';
+   static RECEIVED_USERS: string = 'RECEIVED_USERS';
+   static FAILED_RECEIVED_USERS: string = 'FAILED_RECEIVED_USERS';
+
+  getUsers() {
+    this.ngRedux.dispatch({
+      type: UsersActions.GET_USERS
+    })
+  }
 
   rateSitter(sittersUsername: string, rating: number): void {
     this.ngRedux.dispatch({
@@ -23,6 +32,7 @@ export class UsersActions {
 
    createBaby(baby: Baby) : void {
     console.log(baby);
+
     this.ngRedux.dispatch({
       type: UsersActions.CREATE_BABY,
       payload: baby

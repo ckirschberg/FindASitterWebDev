@@ -1,10 +1,15 @@
+Hello there!
+
 <div *ngFor="let baby of babies">
   
   <p>
-    <app-user
+    Hello
+    {{baby.firstname}} {{baby.lastname}}
+
+    <!-- <app-user
       [userInput]="baby"
       (userClick)="onUserClicked($event)">
-    </app-user>
+    </app-user> -->
   </p>
   
 </div>

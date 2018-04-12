@@ -10,6 +10,19 @@ export function usersReducer(state: UsersState = INITIAL_STATE, action:any) {
  
   switch (action.type) {
   
+    case UsersActions.FAILED_RECEIVED_USERS: 
+      // React to a failed ws call, display error to user.
+      return state;
+
+    case UsersActions.RECEIVED_USERS: 
+      //action.payload is array of users
+      // I could set loading flag to false
+      return tassign(state, {babies: action.payload});
+
+    case UsersActions.GET_USERS:
+      // I could set a loading flag to true, showing the user that the data is loading
+      return state;
+
     case UsersActions.SET_TYPE: // action.payload: isBaby: boolean
       console.log("in the reducer", action.payload);
       

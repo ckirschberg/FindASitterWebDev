@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   
   
   title = 'FindASitter';
-  constructor(private authService: AuthService, 
+  constructor(public authService: AuthService, 
     private usersService: UsersService, private usersActions: UsersActions) {
 
   }

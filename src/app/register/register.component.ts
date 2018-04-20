@@ -16,26 +16,27 @@ import { IAppState } from '../store/store';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  private registerForm: FormGroup;
-  private isBaby: boolean;
+  public registerForm: FormGroup;
+  public isBaby: boolean;
   
   
   constructor(private fb: FormBuilder, 
     private data: DataService, private router: Router,
-    private ngRedux: NgRedux<IAppState>, private usersActions: UsersActions,
+    private ngRedux: NgRedux<IAppState>, public usersActions: UsersActions,
     private UsersService: UsersService) {
    }
 
   onSubmit(form) {
     let baby: Baby = form.value as Baby;
 
-    // Later we will integrate calling a ws with redux
-    // for now we are testing...
     this.usersActions.createBaby(baby);
 
-    this.UsersService.createBaby(baby).subscribe( result => {
-      console.log("from ws", result);
-    });
+    // Later we will integrate calling a ws with redux
+    // for now we are testing...
+    
+    // this.UsersService.createBaby(baby).subscribe( result => {
+    //   console.log("from ws", result);
+    // });
 
     // this.data.addBaby(baby);
     this.router.navigate(['users-list']);

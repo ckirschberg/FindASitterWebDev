@@ -19,7 +19,7 @@ export class UsersListComponent implements OnInit, OnDestroy {
     // Always unsubscribe on destroy.
     this.subscription.unsubscribe();
   }
-  private babies: Baby[];
+  public babies: Baby[];
 
   constructor(private data: DataService, 
     private ngRedux: NgRedux<IAppState>) { }

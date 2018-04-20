@@ -68,7 +68,7 @@ export class AppModule {
       
       // From app.module.ts - constructor
       const rootEpic = combineEpics(
-        this.usersEpic.getUsers, 
+        this.usersEpic.getUsers
     // Each epic is referenced here.
       );
     // Middleware

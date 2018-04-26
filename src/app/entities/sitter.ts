@@ -5,4 +5,9 @@ export class Sitter extends Person {
   public gender: String;
   public rate: number;
   public workAreas: String[];
+
+  // constructor() {
+  //   super();
+  //   this.goToWork();
+  // }
 }

@@ -1,15 +1,17 @@
 Hello there!
 
-<div *ngFor="let baby of babies">
-  
-  <p>
-    Hello
-    {{baby.firstname}} {{baby.lastname}}
+{{birthdate | date | uppercase}}
 
-    <!-- <app-user
-      [userInput]="baby"
-      (userClick)="onUserClicked($event)">
-    </app-user> -->
-  </p>
-  
+{{ 0.743 | percent }}
+{{ 132 | currency: '€' }}
+
+
+
+<input type="text" [(ngModel)]="search">
+
+<div *ngFor="let baby of babies | filterBabies: search">
+  <div *ngIf="baby === -1"> No baby found </div>
+
+  <p> {{baby.firstname | uppercase}} {{baby.lastname}} </p>
 </div>
+

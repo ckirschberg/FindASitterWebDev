@@ -15,6 +15,8 @@ import { Subscription } from 'rxjs/Subscription';
 export class UsersListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
+  birthdate = new Date(2000,0,1); // test
+
   ngOnDestroy(): void {
     // Always unsubscribe on destroy.
     this.subscription.unsubscribe();

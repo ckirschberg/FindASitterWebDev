@@ -1,3 +1,4 @@
+import { FilterBabies } from './filter.babies';
 import { UsersService } from './users.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -9,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';  // <-- #1 import module
@@ -48,8 +49,10 @@ import { createLogger } from 'redux-logger';
     BabyDetailsComponent,
     UserComponent,
     RatingComponent,
+    FilterBabies
   ],
   imports: [
+    FormsModule,
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,

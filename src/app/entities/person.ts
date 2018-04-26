@@ -6,4 +6,8 @@ export class Person {
   public birthDate: Date;
   public area: String;
   public rating: number[];
+
+  goToWork() {
+    console.log("I am making money now");
+  }
 }
